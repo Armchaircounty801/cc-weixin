@@ -219,7 +219,7 @@ function extractText(msg) {
 
 // ─── Claude Agent SDK ─────────────────────────────────────────────────────────
 
-/** 调用 Claude，返回最终文本回复 */
+/** 调用 Claude Code agent，返回最终文本回复 */
 async function askClaude(userText) {
   async function* messages() {
     yield {
@@ -235,9 +235,8 @@ async function askClaude(userText) {
     prompt: messages(),
     options: {
       model: "sonnet",
-      allowedTools: [],          // 纯对话，不开工具
+      baseTools: [{ preset: "default" }],
       deniedTools: ["AskUserQuestion"],
-      systemPrompt: "你是一个微信聊天助手，用中文简洁友好地回复用户消息。",
       cwd: process.cwd(),
       env: process.env,
       abortController: new AbortController(),
